@@ -15,4 +15,4 @@ to save a copy of `"original_photo.jpg"` with the Droste effect in the box bound
 
 ### To-do
 
-Create a skew version to handle non-square boxes.
+- [ ] Create a skew version to handle non-square boxes.
