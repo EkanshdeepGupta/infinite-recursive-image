@@ -39,7 +39,7 @@ Get the outputs stored in `./examples` as follows:
 <img src="examples/modern-tv-cabinet.jpg" alt="test.webp" style="zoom:33%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/modern-tv-cabinet.jpg "552,238,1049,540"
+$ python nested_photo.py ./examples/modern-tv-cabinet.jpg "552,238,1049,540"
 ```
 
 <img src="examples/modern-tv-cabinet-output.png" alt="test-output" style="zoom: 33%;" />
@@ -47,21 +47,21 @@ $ python ./nested_photo.py ./examples/modern-tv-cabinet.jpg "552,238,1049,540"
 <img src="examples/gray-wooden-sideboard.jpg" alt="living-room-tv" style="zoom:80%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/gray-wooden-sideboard.jpg "721,217,1217,550"
+$ python nested_photo.py ./examples/gray-wooden-sideboard.jpg "721,217,1217,550"
 ```
 <img src="examples/gray-wooden-sideboard-output.png" alt="living-room-tv" style="zoom:80%;" />
 
 <img src="examples/black-white.jpg" style="zoom: 33%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/black-white.jpg -s "(246,312),(889,456),(887,826),(250,839)"
+$ python nested_photo.py ./examples/black-white.jpg -s "(246,312),(889,456),(887,826),(250,839)"
 ```
 <img src="examples/black-white-output.png" style="zoom:33%;" />
 
 <img src="examples/living-room.jpg" style="zoom: 50%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/living-room.jpg -s "(450,1020),(1196,1036),(1197,1430),(449,1476)"
+$ python nested_photo.py ./examples/living-room.jpg -s "(450,1020),(1196,1036),(1197,1430),(449,1476)"
 ```
 <img src="examples/living-room-output.png" style="zoom:33%;" />
 
