@@ -5,7 +5,7 @@ A script to create the [Droste effect](https://en.wikipedia.org/wiki/Droste_effe
 
 Run:
 
-```
+```bash
 $ git clone github.com/EkanshdeepGupta/infinite-recursive-image
 $ cd ./infinite-recursive-image
 $ python ./nested_photo.py -h
@@ -13,8 +13,8 @@ $ python ./nested_photo.py -h
 
     positional arguments:
       filename              the filename of the image to be processed.
-      dimensions            the pixel dimensions of the box to create the effect. With -n, the
-                            dimensions have to be given as "x1,y1,x2,y2" With the -s flag, dimensions
+      dimensions            the pixel dimensions of the box to create the effect. In orthogonal mode,
+                            the dimensions have to be given as "x1,y1,x2,y2". In skew mode, dimensions
                             have to be given as "(x1,y1),(x2,y2),(x3,y3),(x4,y4)"
 
     optional arguments:
