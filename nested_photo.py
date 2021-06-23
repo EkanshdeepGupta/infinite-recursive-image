@@ -71,7 +71,7 @@ def main():
     parser.add_argument("filename", help="the filename of the image to be processed.")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-o", "--orthogonal", action="store_true", default=True,
-        help="flag used to run the script on an orthogonally rectangular box. Defaults to -n.")
+        help="flag used to run the script on an orthogonally rectangular box. Defaults to orthogonal mode.")
     group.add_argument("-s", "--skew", action="store_true",
         help="flag used to run the script on a non orthogonally rectangular box.")
 
