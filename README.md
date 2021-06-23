@@ -1,5 +1,5 @@
 # infinite-recursive-image
-A script to create the [Droste effect](https://en.wikipedia.org/wiki/Droste_effect) with any image. Supports both rectangular and skewed boxes.
+A script to create the [Droste effect](https://en.wikipedia.org/wiki/Droste_effect) with any image. Has two modes -- orthogonal mode (`-o`) for rectangular boxes, and skew mode (`-s`) for skewed boxes. 
 
 ## Usage
 
@@ -26,15 +26,17 @@ $ python ./nested_photo.py -h
                             number of times to recurse. Defaults to 10.
 ```
 
-For orthogonal mode, the dimensions can be given as a comma separated string of four numbers, which denote the pixel coordinates of the left, top, right, bottom edge respectively, of the box on which to generate the Droste effect. Since orthogonal mode only works on orthogonal rectangles, only the edges can be specified. For non-rectangular boxes, use skew mode with the `-s` flag.
+For orthogonal mode, the dimensions can be given as a comma separated string of four numbers, which denote the pixel coordinates of the left, top, right, bottom edge respectively, of the box on which to generate the Droste effect. Since orthogonal mode only works on orthogonal rectangles, only the edges can be specified. For non-rectangular boxes, use skew mode with the `-s` flag. In orthogonal mode, the image is cropped accordingly to maintain the aspect ratio with the rectangular box. 
 
-For skew mode, the dimensions can be given as a string of four 2-tuples of numbers, which denote the pixel coordinates of the left, top, right, bottom corner respectively, of the box on which to generate the Droste effect.
+For skew mode, the dimensions can be given as a string of four 2-tuples of numbers, which denote the pixel coordinates of the left, top, right, bottom corner respectively, of the box on which to generate the Droste effect. The perspective shift effect is used to make the image fit the dimensions given.
 
 The pixel coordinates for dimensions can be found using any photo-editing software like GIMP or Adobe Photoshop.
 
 ## Examples
 
 Get the outputs stored in `./examples` as follows:
+
+#### Orthogonal mode:
 
 <img src="examples/modern-tv-cabinet.jpg" alt="test.webp" style="zoom:33%;" />
 
@@ -50,6 +52,8 @@ $ python nested_photo.py ./examples/modern-tv-cabinet.jpg "552,238,1049,540"
 $ python nested_photo.py ./examples/gray-wooden-sideboard.jpg "721,217,1217,550"
 ```
 <img src="examples/gray-wooden-sideboard-output.png" alt="living-room-tv" style="zoom:80%;" />
+
+#### Skew mode
 
 <img src="examples/black-white.jpg" style="zoom: 33%;" />
 
