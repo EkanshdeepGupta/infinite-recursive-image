@@ -30,6 +30,8 @@ For orthogonal mode, the dimensions can be given as a comma separated string of 
 
 For skew mode, the dimensions can be given as a string of four 2-tuples of numbers, which denote the pixel coordinates of the left, top, right, bottom corner respectively, of the box on which to generate the Droste effect.
 
+The pixel coordinates for dimensions can be found using any photo-editing software like GIMP or Adobe Photoshop.
+
 ## Examples
 
 Get the outputs stored in `./examples` as follows:
@@ -66,7 +68,7 @@ $ python ./nested_photo.py ./examples/living-room.jpg -s "(450,1020),(1196,1036)
 <img src="examples/seats.jpg" style="zoom: 25%;" />
 
 ```bash
-$ python nested_photo.py "./examples/seats.jpg" -s "(1233,284),(2346,270),(2360, 1007),(1249, 1024)"
+$ python nested_photo.py "./examples/seats.jpg" -s "(1231,281),(2357,265),(2367,1009), (1244,1025)"
 ```
 <img src="examples/seats-output.png" style="zoom:25%;" />
 
