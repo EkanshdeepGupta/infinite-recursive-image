@@ -72,7 +72,7 @@ $ python nested_photo.py ./examples/living-room.jpg -s "(450,1020),(1196,1036),(
 <img src="examples/seats.jpg" style="zoom: 25%;" />
 
 ```bash
-$ python nested_photo.py "./examples/seats.jpg" -s "(1231,281),(2357,265),(2367,1009), (1244,1025)"
+$ python nested_photo.py "./examples/seats.jpg" -s "(1231,281), (2357,265), (2367,1009), (1244,1025)"
 ```
 <img src="examples/seats-output.png" style="zoom:25%;" />
 
