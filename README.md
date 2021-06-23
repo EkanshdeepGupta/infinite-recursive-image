@@ -28,7 +28,7 @@ $ python ./nested_photo.py -h
 
 For orthogonal mode, the dimensions can be given as a comma separated string of four numbers, which denote the pixel coordinates of the left, top, right, bottom edges respectively, of the box on which to generate the Droste effect. Since orthogonal mode only works on orthogonal rectangles, only the edges can be specified. For non-rectangular boxes, use skew mode with the `-s` flag. In orthogonal mode, the image is cropped accordingly to maintain the aspect ratio with the rectangular box. 
 
-For skew mode, the dimensions can be given as a string of four 2-tuples of numbers, which denote the pixel coordinates of the top-left, top-right, bottom-right, bottom-left corners respectively, of the box on which to generate the Droste effect. The perspective shift effect is used to make the image fit the dimensions given.
+For skew mode, the dimensions can be given as a string of four 2-tuples of numbers, which denote the pixel coordinates of the top-left, top-right, bottom-right, bottom-left corners respectively, of the box on which to generate the Droste effect. In skew mode, the perspective shift effect is used to make the image fit the dimensions given.
 
 The pixel coordinates for dimensions can be found using any photo-editing software like GIMP or Adobe Photoshop.
 
