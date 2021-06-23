@@ -34,27 +34,34 @@ For skew mode, the dimensions can be given as a string of four 2-tuples of numbe
 
 Get the outputs stored in `./examples` as follows:
 
-<img src="examples/test.webp" alt="test.webp" style="zoom:33%;" />
+<img src="examples/modern-tv-cabinet.jpg" alt="test.webp" style="zoom:33%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/test.webp "552,238,1049,540"
+$ python ./nested_photo.py ./examples/modern-tv-cabinet.jpg "552,238,1049,540"
 ```
 
-<img src="examples/test-output.png" alt="test-output" style="zoom: 33%;" />
+<img src="examples/modern-tv-cabinet-output.png" alt="test-output" style="zoom: 33%;" />
 
-<img src="examples/living-room-tv.jpg" alt="living-room-tv" style="zoom:80%;" />
+<img src="examples/gray-wooden-sideboard.jpg" alt="living-room-tv" style="zoom:80%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/living-room-tv.jpg "162,185,337,280"
+$ python ./nested_photo.py ./examples/gray-wooden-sideboard.jpg "721,217,1217,550"
 ```
-<img src="examples/living-room-tv-output.png" alt="living-room-tv" style="zoom:80%;" />
+<img src="examples/gray-wooden-sideboard-output.png" alt="living-room-tv" style="zoom:80%;" />
 
-<img src="examples/image.webp" style="zoom: 33%;" />
+<img src="examples/black-white.jpg" style="zoom: 33%;" />
 
 ```bash
-$ python ./nested_photo.py ./examples/image.webp -s "(456,155), (863,237), (857,468), (457,451)"
+$ python ./nested_photo.py ./examples/black-white.jpg -s "(246,312),(889,456),(887,826),(250,839)"
 ```
-<img src="examples/image-output.png" style="zoom:33%;" />
+<img src="examples/black-white-output.png" style="zoom:33%;" />
+
+<img src="examples/living-room.jpg" style="zoom: 50%;" />
+
+```bash
+$ python ./nested_photo.py ./examples/living-room.jpg -s "(450,1020),(1196,1036),(1197,1430),(449,1476)"
+```
+<img src="examples/living-room-output.png" style="zoom:33%;" />
 
 <img src="examples/seats.jpg" style="zoom: 25%;" />
 
@@ -63,6 +70,13 @@ $ python nested_photo.py "./examples/seats.jpg" -s "(1233,284),(2346,270),(2360,
 ```
 <img src="examples/seats-output.png" style="zoom:25%;" />
 
+#### Photo Credits
+
+* Modern TV Cabinet - Photo by MAX 3D Design from Shutterstock.
+* Living Room - Photo by Jean van der Meulen from Pexels 
+* Gray Wooden Sideboard - Photo from Pexels
+* Seats - Photo by <a href="https://freeimages.com/photographer/mrmaris-50513">Simon Maris</a> from <a href="https://freeimages.com">FreeImages</a>
+* Black White - Photo by [Sidekix Media](https://unsplash.com/@sidekix?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/living-room?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)  
 
 
 ### To-do
