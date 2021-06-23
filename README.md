@@ -34,12 +34,34 @@ For skew mode, the dimensions can be given as a string of four 2-tuples of numbe
 
 Get the outputs stored in `./examples` as follows:
 
+<img src="examples/test.webp" alt="test.webp" style="zoom:33%;" />
+
+```bash
+$ python ./nested_photo.py ./examples/test.webp "552,238,1049,540"
+```
+
+<img src="examples/test-output.png" alt="test-output" style="zoom: 33%;" />
+
+![living-room-tv](examples/living-room-tv.jpg)
+
 ```bash
 $ python ./nested_photo.py ./examples/living-room-tv.jpg "162,185,337,280"
-$ python ./nested_photo.py ./examples/test.webp "552,238,1049,540"
+```
+![living-room-tv](examples/living-room-tv-output.png)
+
+<img src="examples/image.webp" style="zoom: 33%;" />
+
+```bash
 $ python ./nested_photo.py ./examples/image.webp -s "(456,155), (863,237), (857,468), (457,451)"
+```
+<img src="examples/image-output.png" style="zoom:33%;" />
+
+<img src="examples/seats.jpg" style="zoom: 25%;" />
+
+```bash
 $ python nested_photo.py "./examples/seats.jpg" -s "(1233,284),(2346,270),(2360, 1007),(1249, 1024)"
 ```
+<img src="examples/seats-output.png" style="zoom:25%;" />
 
 
 
