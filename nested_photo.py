@@ -1,33 +1,51 @@
 #!/usr/bin/python
 
 import sys
+import argparse
 from PIL import Image
+import numpy
+import datetime
 
 
-def resizeImg(img):
+def find_coeffs(pa, pb):
+    # Code copied from mmgp's answer at https://stackoverflow.com/a/14178717/5564605
+    matrix = []
+    for p1, p2 in zip(pa, pb):
+        matrix.append([p1[0], p1[1], 1, 0, 0, 0, -p2[0]*p1[0], -p2[0]*p1[1]])
+        matrix.append([0, 0, 0, p1[0], p1[1], 1, -p2[1]*p1[0], -p2[1]*p1[1]])
+
+    A = numpy.array(matrix, dtype=float)
+    B = numpy.array(pb).reshape(8)
+
+    res = numpy.linalg.solve(A,B)
+
+    return numpy.array(res).reshape(8)
+
+def resizeImg(img,box):
     width, height = img.size
+    new_box = box.copy()
 
-    crop_width = dim[2] - dim[0]
-    crop_height = dim[3] - dim[1]
+    crop_width = box[2] - box[0]
+    crop_height = box[3] - box[1]
 
     if (width / crop_width) > (height / crop_height):
-        l,r = computeCrop(0, dim[0], dim[2], img.width, (crop_width*height)/crop_height)
+        l,r = computeCrop(0, box[0], box[2], img.width, (crop_width*height)/crop_height)
 
         if l != 0:
-            dim[0] -= l
-            dim[2] -= l
+            new_box[0] -= l
+            new_box[2] -= l
 
         img2 = img.crop((l, 0, r, height))
     else:
-        t,b = computeCrop(0, dim[1], dim[3], img.height, (crop_height*width)/crop_width )
+        t,b = computeCrop(0, box[1], box[3], img.height, (crop_height*width)/crop_width )
 
         if t != 0:
-            dim[1] -= t
-            dim[3] -= t
+            new_box[1] -= t
+            new_box[3] -= t
 
         img2 = img.crop((0, t, width, b))
 
-    return img2
+    return (img2,new_box)
 
 def computeCrop(i1, i2, i3, i4, length):
     crop_amount = i4-i1-length
@@ -48,58 +66,59 @@ def computeCrop(i1, i2, i3, i4, length):
 
     return (round(i2-first_overhang), round(i3+second_overhang))
 
-def sum_1_to_i(count, r, n): #returns n * (1 + r^1 + ... + r^count)
-    acc = 0
-
-    for i in range(count):
-        acc += r ** i
-
-    acc *= n
-
-    return round(acc)
-
-  
-
 def main():
-    if len(sys.argv) != 6:
-        print("Incorrect number of arguments")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filename", help="the filename of the image to be processed.")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-o", "--orthogonal", action="store_true", default=True,
+        help="flag used to run the script on an orthogonally rectangular box. Defaults to -n.")
+    group.add_argument("-s", "--skew", action="store_true",
+        help="flag used to run the script on a non orthogonally rectangular box.")
+
+    parser.add_argument("dimensions", 
+        help='''the pixel dimensions of the box to create the effect. \n
+         With -n, the dimensions have to be given as x1,y1,x2,y2 \n
+         With the -s flag, dimensions have to be given as (x1,y1),(x2,y2),(x3,y3),(x4,y4)''')
+    parser.add_argument("-n", "--count", type=int, help="number of times to recurse. Defaults to 10.", default=10)
+
+    args = parser.parse_args()
+
+    try:
+        img = Image.open(args.filename)
+    except FileNotFoundError:
+        print("File not found. Error.")
         return -1
 
-    else:
+    img = img.convert("RGBA")
+    width,height = img.size
 
-        try:
-            org_img = Image.open(sys.argv[1])
-        except FileNotFoundError:
-            print("File not found. Error.")
-            return -1
+    if args.skew:
+        dim_list = args.dimensions.split(',')
+        box = list(map(eval, map(','.join, zip(dim_list[::2], dim_list[1::2]))))
 
-
-        org_dim = list(map(int, (sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])))
-        global dim
-        dim = org_dim.copy() # Making copy of org_dim; need org_dim untouched by resizeImg(), to place last copy on original image.
-
-
-        img = resizeImg(org_img)
-        crop_img = img.copy()
-
-        org_paste_point = (dim[0], dim[1])
-        org_crop_size = (dim[2] - dim[0], dim[3] - dim[1])
-        ratio = org_crop_size[0] / img.width
-
-        for i in range(100):
-            crop_size = tuple(map(lambda x: round(x * (ratio ** i)), img.size ) )
-            paste_point = tuple(map(lambda x: sum_1_to_i(i, ratio, x), org_paste_point))
-
-            if crop_size[0] * crop_size[1] == 0:
+        for i in range(args.count):
+            try:
+                coeffs = find_coeffs(box,
+                    [(0, 0), (width, 0), (width, height), (0, height)])
+            except:
                 break
 
+            img2 = img.transform(img.size, Image.PERSPECTIVE, coeffs)
+            img.paste(img2, (0,0), img2)
+
+    else: # args.orthogonal case.
+        box = list(map(int, args.dimensions.split(',')))
+        crop_img,crop_box = resizeImg(img, box)
+        crop_size = (box[2]-box[0], box[3]-box[1])
+
+        for i in range(args.count - 1):
             img2 = crop_img.resize(crop_size)
-            img.paste(img2, paste_point)    
+            crop_img.paste(img2, (crop_box[0], crop_box[1]))
 
-        img2 = img.resize(org_crop_size)
-        org_img.paste(img2, org_dim[:2])
+        img2 = crop_img.resize(crop_size)
+        img.paste(img2, (box[0], box[1]))
 
-        org_img.save("output.jpg")  
+    img.save("output-" + str(datetime.datetime.now()) + ".png")
 
 if __name__ == "__main__":
     main()
