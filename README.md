@@ -75,10 +75,10 @@ $ python nested_photo.py "./examples/seats.jpg" -s "(1231,281),(2357,265),(2367,
 #### Photo Credits
 
 * Modern TV Cabinet - Photo by MAX 3D Design from Shutterstock.
-* Living Room - Photo by Jean van der Meulen from Pexels 
-* Gray Wooden Sideboard - Photo from Pexels
-* Seats - Photo by <a href="https://freeimages.com/photographer/mrmaris-50513">Simon Maris</a> from <a href="https://freeimages.com">FreeImages</a>
-* Black White - Photo by [Sidekix Media](https://unsplash.com/@sidekix?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/living-room?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)  
+* Gray Wooden Sideboard - Photo from Pexels.
+* Black White - Photo by [Sidekix Media](https://unsplash.com/@sidekix?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/living-room?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+* Living Room - Photo by Jean van der Meulen from Pexels.
+* Seats - Photo by <a href="https://freeimages.com/photographer/mrmaris-50513">Simon Maris</a> from <a href="https://freeimages.com">FreeImages</a>.
 
 
 ### To-do
