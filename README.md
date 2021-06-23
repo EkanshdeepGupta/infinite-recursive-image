@@ -42,12 +42,12 @@ $ python ./nested_photo.py ./examples/test.webp "552,238,1049,540"
 
 <img src="examples/test-output.png" alt="test-output" style="zoom: 33%;" />
 
-![living-room-tv](examples/living-room-tv.jpg)
+<img src="examples/living-room-tv.jpg" alt="living-room-tv" style="zoom:80%;" />
 
 ```bash
 $ python ./nested_photo.py ./examples/living-room-tv.jpg "162,185,337,280"
 ```
-![living-room-tv](examples/living-room-tv-output.png)
+<img src="examples/living-room-tv-output.png" alt="living-room-tv" style="zoom:80%;" />
 
 <img src="examples/image.webp" style="zoom: 33%;" />
 
