@@ -77,8 +77,8 @@ def main():
 
     parser.add_argument("dimensions", 
         help='''the pixel dimensions of the box to create the effect. \n
-         With -n, the dimensions have to be given as x1,y1,x2,y2 \n
-         With the -s flag, dimensions have to be given as (x1,y1),(x2,y2),(x3,y3),(x4,y4)''')
+         With -n, the dimensions have to be given as "x1,y1,x2,y2" \n
+         With the -s flag, dimensions have to be given as "(x1,y1),(x2,y2),(x3,y3),(x4,y4)"''')
     parser.add_argument("-n", "--count", type=int, help="number of times to recurse. Defaults to 10.", default=10)
 
     args = parser.parse_args()
